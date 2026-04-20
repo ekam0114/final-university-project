@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin: Workshops | U-WRS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-brand"><a th:href="@{/}">U-WRS</a></div>
+    <div class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/admin/workshops}">Admin</a>
+        <form th:action="@{/logout}" method="post" style="display:inline">
+            <button type="submit" class="btn-link">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header">
+        <h1>Admin: Manage Workshops</h1>
+        <a th:href="@{/admin/workshops/new}" class="btn btn-primary">+ Create New Workshop</a>
+    </div>
+
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+
+    <div th:if="${#lists.isEmpty(workshops)}" class="empty-state">
+        <p>No workshops yet. Create your first one!</p>
+    </div>
+
+    <table th:if="${!#lists.isEmpty(workshops)}" class="data-table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Start Time</th>
+            <th>Seats</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="w : ${workshops}">
+            <td th:text="${w.title}">Title</td>
+            <td th:text="${#temporals.format(w.startDatetime, 'MMM dd, yyyy HH:mm')}">Date</td>
+            <td th:text="${w.seatsRemaining + '/' + w.totalSeats}">5/30</td>
+            <td>
+                <span class="badge" th:text="${w.status}"
+                      th:classappend="${w.status == 'ACTIVE'} ? 'badge-active' : 'badge-cancelled'">ACTIVE</span>
+            </td>
+            <td class="action-cell">
+                <a th:href="@{/admin/workshops/{id}/edit(id=${w.id})}" class="btn btn-sm btn-secondary">Edit</a>
+                <form th:action="@{/admin/workshops/{id}/cancel(id=${w.id})}" method="post" style="display:inline"
+                      th:if="${w.status == 'ACTIVE'}">
+                    <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Cancel this workshop?')">Cancel</button>
+                </form>
+                <a th:href="@{/admin/workshops/{id}/registrations(id=${w.id})}" class="btn btn-sm btn-info">Registrations</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/><title>Error | U-WRS</title>
+<link rel="stylesheet" th:href="@{/css/style.css}"/></head>
+<body>
+<nav class="navbar"><div class="nav-brand"><a th:href="@{/}">U-WRS</a></div></nav>
+<main class="container">
+    <div class="error-card">
+        <h1>Registration Error</h1>
+        <p th:text="${message}">A conflict occurred.</p>
+        <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        <a th:href="@{/}" class="btn btn-primary">Go Home</a>
+    </div>
+</main>
+</body>
+</html>
