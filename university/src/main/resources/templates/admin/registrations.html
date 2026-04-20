@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registrations | U-WRS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-brand"><a th:href="@{/}">U-WRS</a></div>
+    <div class="nav-links">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/admin/workshops}">Admin</a>
+        <form th:action="@{/logout}" method="post" style="display:inline">
+            <button type="submit" class="btn-link">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="page-header">
+        <h1>Registrations for "<span th:text="${workshop.title}">Workshop</span>"</h1>
+        <a th:href="@{/admin/workshops}" class="btn btn-secondary">← Back</a>
+    </div>
+
+    <div class="workshop-summary">
+        <span>📅 <strong th:text="${#temporals.format(workshop.startDatetime, 'MMM dd, yyyy HH:mm')}"></strong></span>
+        <span>📍 <strong th:text="${workshop.location}"></strong></span>
+        <span>🪑 <strong th:text="${workshop.seatsRemaining + '/' + workshop.totalSeats + ' remaining'}"></strong></span>
+    </div>
+
+    <div th:if="${#lists.isEmpty(registrations)}" class="empty-state">
+        <p>No registrations for this workshop yet.</p>
+    </div>
+
+    <table th:if="${!#lists.isEmpty(registrations)}" class="data-table">
+        <thead>
+        <tr>
+            <th>Participant</th>
+            <th>Email</th>
+            <th>Registered At</th>
+            <th>Status</th>
+            <th>Cancelled At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="r : ${registrations}">
+            <td th:text="${r.userName}">Name</td>
+            <td th:text="${r.userEmail}">email@example.com</td>
+            <td th:text="${#temporals.format(r.createdAt, 'MMM dd, yyyy HH:mm')}">Date</td>
+            <td>
+                <span class="badge" th:text="${r.status}"
+                      th:classappend="${r.status == 'ACTIVE'} ? 'badge-active' : 'badge-cancelled'">ACTIVE</span>
+            </td>
+            <td th:text="${r.cancelledAt != null ? #temporals.format(r.cancelledAt, 'MMM dd, yyyy HH:mm') : '—'}">—</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

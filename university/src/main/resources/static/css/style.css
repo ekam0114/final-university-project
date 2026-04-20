@@ -1,0 +1,186 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+}
+
+a { color: #4f46e5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== Navbar ===== */
+.navbar {
+    background: #1e1b4b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.nav-brand a { color: #fff; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.5px; }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a { color: #c7d2fe; font-size: 0.95rem; }
+.nav-links a:hover { color: #fff; text-decoration: none; }
+
+/* ===== Container ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s, transform 0.1s;
+    text-decoration: none;
+}
+.btn:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; }
+.btn-primary { background: #4f46e5; color: #fff; }
+.btn-secondary { background: #6b7280; color: #fff; }
+.btn-danger { background: #dc2626; color: #fff; }
+.btn-info { background: #0891b2; color: #fff; }
+.btn-block { display: block; width: 100%; text-align: center; padding: 0.75rem; }
+.btn-sm { padding: 0.3rem 0.75rem; font-size: 0.82rem; }
+.btn-link { background: none; border: none; color: #c7d2fe; font-size: 0.95rem; cursor: pointer; padding: 0; }
+.btn-link:hover { color: #fff; }
+
+/* ===== Alerts ===== */
+.alert {
+    padding: 0.85rem 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    font-size: 0.93rem;
+}
+.alert-success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+.alert-error   { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+/* ===== Workshop Grid (Home) ===== */
+h1 { font-size: 1.8rem; margin-bottom: 1.5rem; color: #1e1b4b; }
+
+.workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.workshop-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.workshop-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+.card-body { padding: 1.4rem; }
+.card-body h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: #1e1b4b; }
+.card-meta { display: flex; align-items: center; gap: 0.5rem; color: #555; font-size: 0.88rem; margin-bottom: 0.5rem; }
+.card-meta .icon { font-size: 1rem; }
+.card-body .btn { margin-top: 1rem; }
+
+/* ===== Auth ===== */
+.auth-container { display: flex; justify-content: center; padding-top: 3rem; }
+.auth-card {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 420px;
+}
+.auth-card h2 { margin-bottom: 1.5rem; font-size: 1.5rem; color: #1e1b4b; }
+.auth-footer { margin-top: 1.2rem; text-align: center; font-size: 0.9rem; color: #666; }
+
+/* ===== Forms ===== */
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.35rem; color: #374151; }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.15s;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+}
+.field-error { display: block; color: #dc2626; font-size: 0.82rem; margin-top: 0.3rem; }
+.required { color: #dc2626; }
+.form-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+
+.form-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 640px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.form-card h2 { margin-bottom: 1.5rem; color: #1e1b4b; }
+
+/* ===== Tables ===== */
+.data-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+.data-table th { background: #1e1b4b; color: #fff; padding: 0.85rem 1rem; text-align: left; font-size: 0.88rem; font-weight: 600; }
+.data-table td { padding: 0.8rem 1rem; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: #f9f9ff; }
+.action-cell { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+/* ===== Page Header ===== */
+.page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.page-header h1 { margin-bottom: 0; }
+
+/* ===== Badges ===== */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.badge-active { background: #d1fae5; color: #065f46; }
+.badge-cancelled { background: #fee2e2; color: #991b1b; }
+
+/* ===== Workshop Detail ===== */
+.detail-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    max-width: 780px;
+}
+.detail-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.detail-header h1 { margin-bottom: 0; }
+.detail-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.meta-item { display: flex; flex-direction: column; }
+.meta-label { font-size: 0.82rem; font-weight: 600; color: #6b7280; margin-bottom: 0.2rem; }
+.detail-description { margin-bottom: 1.5rem; }
+.detail-description h3 { margin-bottom: 0.5rem; }
+.detail-description p { color: #555; line-height: 1.6; }
+.detail-actions { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
+.status-msg { margin-bottom: 0.75rem; font-size: 0.95rem; }
+
+/* ===== Error Card ===== */
+.error-card {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+.error-card h1 { font-size: 2rem; color: #dc2626; margin-bottom: 1rem; }
+.error-card p { color: #555; margin-bottom: 1.5rem; }
+.error-card .btn { margin: 0 0.5rem; }
+
+/* ===== Misc ===== */
+.empty-state { text-align: center; padding: 3rem; color: #888; }
+.sold-out { color: #dc2626 !important; font-weight: 600; }
+.text-muted { color: #9ca3af; }
+.workshop-summary { display: flex; gap: 2rem; padding: 1rem 0; margin-bottom: 1.5rem; font-size: 0.9rem; color: #555; }
